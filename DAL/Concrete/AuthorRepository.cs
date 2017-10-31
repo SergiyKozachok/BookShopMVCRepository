@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entity;
+using System.Data.Entity;
 
 namespace DAL.Concrete
 {
@@ -39,9 +40,10 @@ namespace DAL.Concrete
                 this._context.Dispose();
         }
 
-        public IQueryable<Author> GetAllAuthors()
+        public List<Author> GetAllAuthors()
         {
-            return this._context.Set<Author>();
+            return _context.Set<Author>()
+                .ToList();
         }
 
         public Author GetAuthorById(int id)
@@ -53,6 +55,11 @@ namespace DAL.Concrete
         public void SaveChange()
         {
             this._context.SaveChanges();
+        }
+
+        public int TotalAuthors()
+        {
+            return this.GetAllAuthors().Count;
         }
     }
 }

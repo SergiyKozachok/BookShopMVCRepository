@@ -49,4 +49,25 @@ namespace BLL.ViewModels
         [StringLength(maximumLength: 500, MinimumLength = 1)]
         public string LastName { get; set; }
     }
+
+    public class SearchAuthorsViewModel
+    {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+    }
+
+    public class AuthorViewModel
+    {
+        public IEnumerable<AuthorItemViewModel> Authors { get; set; }
+
+        public int TotalPages { get; set; }
+
+        [Range(1, short.MaxValue)]
+        public int Pages { get; set; }
+        public int CurrentPage { get; set; }
+
+        public SearchAuthorsViewModel Search { get; set; }
+    }
 }

@@ -1,49 +1,28 @@
-﻿@model IEnumerable<BLL.ViewModels.AuthorItemViewModel>
+﻿@model BLL.ViewModels.AuthorViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "_Authors";
+
+    string links = Html.PageLinks(Model.CurrentPage, Model.TotalPages, x => Url.Action("Index", "Author", new
+    {
+        page = x,
+        pages = Model.Pages,
+        FirstName = Model.Search.FirstName,
+        LastName = Model.Search.LastName
+
+    }));
 }
 
-<h2>Index</h2>
+<h2>Products</h2>
 
-<table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>
-                #
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @item.FirstName
-                </td>
-                <td>
-                    @item.LastName
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit", new { id = item.Id})">Edit</a> |
-                    <a href="@Url.Action("Delete", new { id = item.Id})">Delete</a> |
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-@Html.ActionLink("Create", "Add", "Author")
-
+@*@using (Html.BeginForm())
+    {
+        @Html.Partial("_ItemsPerPage", Model)
+    }*@
+@*<p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-info" })
+    </p>*@
+@Html.Raw(links)
+@Html.Partial("_Authors", Model.Authors)
+@Html.Partial("_Search", Model.Search)
+@Html.Raw(links)

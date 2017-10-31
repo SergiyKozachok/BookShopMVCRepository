@@ -164,6 +164,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,10 +181,12 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Author\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\_Authors.cshtml" />
     <Content Include="Areas\Admin\Views\Author\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Author\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Author\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Author\_Search.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

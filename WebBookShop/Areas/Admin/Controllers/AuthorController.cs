@@ -17,16 +17,16 @@ namespace WebBookShop.Areas.Admin.Controllers
             _authorProvider = authorProvider;
         }
 
-        public ActionResult Index()
-        {
-            var model = _authorProvider.GetAuthors();
-            return View(model);
-        }
-
-        //public ActionResult Index(int page = 1, int pages = 10, SearchProductViewModel search = null)
+        //public ActionResult Index()
         //{
-        //    return View(_authorProvider.GetAuthorsByPage(page, pages, search));
+        //    var model = _authorProvider.GetAuthors();
+        //    return View(model);
         //}
+
+        public ActionResult Index(int page = 1, int pages = 10, SearchAuthorsViewModel search = null)
+        {
+            return View(_authorProvider.GetAuthorsByPage(page, pages, search));
+        }
 
         [HttpGet]
         public ActionResult Add()

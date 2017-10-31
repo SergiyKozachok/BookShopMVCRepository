@@ -10,9 +10,10 @@ namespace DAL.Abstract
     public interface IAuthorRepository : IDisposable
     {
         Author Add(Author author);
-        IQueryable<Author> GetAllAuthors();
+        List<Author> GetAllAuthors();
         void Delete(int id);
         Author GetAuthorById(int id);
         void SaveChange();
+        int TotalAuthors();
     }
 }

@@ -100,5 +100,38 @@ namespace BLL.Concrete
                 });
             return model.AsEnumerable();
         }
+
+        public AuthorViewModel GetAuthorsByPage(int page, int pages, SearchAuthorsViewModel search)
+        {
+            List<Author> query = _authorRepository.GetAllAuthors();
+            AuthorViewModel model = new AuthorViewModel();
+
+            if (!string.IsNullOrEmpty(search.FirstName))
+            {
+                query = query.Where(c => c.FirstName.Contains(search.FirstName)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(search.LastName))
+            {
+                query = query.Where(c => c.LastName.Contains(search.LastName)).ToList();
+            }
+
+            model.Authors = query
+                .OrderBy(c => c.LastName)
+                .Skip((page - 1) * pages)
+                .Take(pages)
+                .Select(c => new AuthorItemViewModel
+                {
+                    Id = c.Id,
+                    FirstName = c.FirstName,
+                    LastName = c.LastName
+                }).ToList();
+            model.TotalPages = (int)Math.Ceiling((double)query.Count / pages);
+            model.CurrentPage = page;
+            model.Search = search;
+            model.Pages = pages;
+
+            return model;
+        }
     }
 }
