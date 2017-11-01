@@ -56,7 +56,10 @@
   <ItemGroup>
     <Compile Include="Abstract\IAuthorRepository.cs" />
     <Compile Include="Abstract\IEFContext.cs" />
+    <Compile Include="Abstract\IRoleRepository.cs" />
+    <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Concrete\AuthorRepository.cs" />
+    <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\DBInitializer.cs" />
     <Compile Include="Entity\EFContext.cs" />

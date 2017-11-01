@@ -40,10 +40,10 @@ namespace DAL.Concrete
                 this._context.Dispose();
         }
 
-        public List<Author> GetAllAuthors()
+        public IQueryable<Author> GetAllAuthors()
         {
             return _context.Set<Author>()
-                .ToList();
+                .AsQueryable();
         }
 
         public Author GetAuthorById(int id)
@@ -59,7 +59,7 @@ namespace DAL.Concrete
 
         public int TotalAuthors()
         {
-            return this.GetAllAuthors().Count;
+            return this.GetAllAuthors().Count();
         }
     }
 }

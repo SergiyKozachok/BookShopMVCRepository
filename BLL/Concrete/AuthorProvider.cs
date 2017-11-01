@@ -103,17 +103,17 @@ namespace BLL.Concrete
 
         public AuthorViewModel GetAuthorsByPage(int page, int pages, SearchAuthorsViewModel search)
         {
-            List<Author> query = _authorRepository.GetAllAuthors();
+            IQueryable<Author> query = _authorRepository.GetAllAuthors();
             AuthorViewModel model = new AuthorViewModel();
 
             if (!string.IsNullOrEmpty(search.FirstName))
             {
-                query = query.Where(c => c.FirstName.Contains(search.FirstName)).ToList();
+                query = query.Where(c => c.FirstName.Contains(search.FirstName)).AsQueryable();
             }
 
             if (!string.IsNullOrEmpty(search.LastName))
             {
-                query = query.Where(c => c.LastName.Contains(search.LastName)).ToList();
+                query = query.Where(c => c.LastName.Contains(search.LastName)).AsQueryable();
             }
 
             model.Authors = query
@@ -125,8 +125,8 @@ namespace BLL.Concrete
                     Id = c.Id,
                     FirstName = c.FirstName,
                     LastName = c.LastName
-                }).ToList();
-            model.TotalPages = (int)Math.Ceiling((double)query.Count / pages);
+                }).AsQueryable();
+            model.TotalPages = (int)Math.Ceiling((double)query.Count() / pages);
             model.CurrentPage = page;
             model.Search = search;
             model.Pages = pages;
