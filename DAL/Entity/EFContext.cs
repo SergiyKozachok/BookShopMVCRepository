@@ -21,6 +21,8 @@ namespace DAL.Entity
         }
 
         public DbSet<Author> Authors { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         IDbSet<TEntity> IEFContext.Set<TEntity>()
         {

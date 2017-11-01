@@ -60,9 +60,15 @@
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\DBInitializer.cs" />
     <Compile Include="Entity\EFContext.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Migrations\201710310840566_Create table Authors.cs" />
     <Compile Include="Migrations\201710310840566_Create table Authors.Designer.cs">
       <DependentUpon>201710310840566_Create table Authors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010929386_Create tables User and Role.cs" />
+    <Compile Include="Migrations\201711010929386_Create tables User and Role.Designer.cs">
+      <DependentUpon>201711010929386_Create tables User and Role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710310840566_Create table Authors.resx">
       <DependentUpon>201710310840566_Create table Authors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010929386_Create tables User and Role.resx">
+      <DependentUpon>201711010929386_Create tables User and Role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
